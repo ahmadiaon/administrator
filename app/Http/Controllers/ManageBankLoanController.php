@@ -17,6 +17,14 @@ class ManageBankLoanController extends Controller
             'title'         => 'Bank Loan',
         ]);
     }
+    public function report()
+    {
+        // return CommunityRegister::join('communities', 'communities.uuid', '=', 'community_registers.community_uuid')->get(['community_registers.*', 'community_registers.name as nama', 'communities.name']);
+
+        return view('reportMail', [
+            'title'         => 'Bank Loan',
+        ]);
+    }
     public function anyData()
     {
         return Datatables::of(FinancialServiceSubmission::latest())

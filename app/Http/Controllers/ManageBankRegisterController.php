@@ -75,13 +75,14 @@ class ManageBankRegisterController extends Controller
     {
         $from =  date('Y-m-d', strtotime($request->date_start));
         $to = date('Y-m-d', strtotime($request->date_end));
-        return FinancialServiceRegister::whereBetween('updated_at', [$from, $to])->get();
+        // return FinancialServiceRegister::whereBetween('updated_at', [$from, $to])->get();
         $data["email"] = "dataahmadi2021@gmail.com";
         $data["title"] = "From digi.com";
         $data["body"] = "This is Demo";
         $data["content"] = "This is Demo";
 
-        $pdf = PDF::loadView('myPDF', $data);
+        $pdf = PDF::loadView('reportMail', $data);
+        return $pdf->stream();
         session()->put('email', 'id');
 
          Mail::send('contenMail', $data, function($message)use($data, $pdf) {

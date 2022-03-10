@@ -93,6 +93,7 @@ Route::middleware(['islogin'])->group(function () {
     Route::get('/bank-loan-data', [ManageBankLoanController::class, 'anyData'])->name('bank-loan-data');
 
 });
+Route::get('/report', [ManageBankLoanController::class, 'report']);
 
 
 

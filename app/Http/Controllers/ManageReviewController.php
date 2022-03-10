@@ -12,7 +12,9 @@ class ManageReviewController extends Controller
 {
     public function index()
     {
-        $shares = Review::join('users', 'users.uuid', '=', 'reviews.user_uuid') ->get(['reviews.*','users.name as user']);
+        $shares = Review::join('users', 'users.uuid', '=', 'reviews.user_uuid')
+        ->join('businesses', 'businesses.uuid', '=', 'reviews.business_uuid')
+        ->get(['businesses.name','reviews.*','users.name as user']);
         // return $shares;
         return view('dashboard.manage.review.index', [
             'title'         => 'Review',

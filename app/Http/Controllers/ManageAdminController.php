@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
 
 class ManageAdminController extends Controller
@@ -60,7 +61,7 @@ class ManageAdminController extends Controller
             'email'        => 'required|email:dns|unique:admins',
             'password'     => 'required'
         ]);
-        $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['password'] =  Hash::make($validatedData['password']);
         $validatedData['uuid']  = Str::uuid();
         $validatedData['phone'] = $request->phone;
         Admin::create($validatedData);
@@ -120,7 +121,7 @@ class ManageAdminController extends Controller
         if ($request->password == null) {
             unset($validateData['password']);
         } else {
-            $validateData['password'] = bcrypt($request->password);
+            $validateData['password'] =  Hash::make($request->password);
         }
         Admin::where('id', $admin->id)->update($validateData);
         return redirect('/admin')->with('success', 'New Post Inserted!');

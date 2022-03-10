@@ -1,8 +1,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="/">
-            <img src="http://administrator.test/vendors/images/digi.png" alt="" class="dark-logo">
-            <img src="http://administrator.test/vendors/images/digi.png" alt="" class="light-logo">
+            <img src="http://administrator.test/vendors/images/digi_dark.png" alt="" class="dark-logo">
+            <img src="http://administrator.test/vendors/images/digi_dark.png" alt="" class="light-logo">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>

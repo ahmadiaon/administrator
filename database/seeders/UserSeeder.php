@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class UserSeeder extends Seeder
                 'uuid' => 'ini-uuid-user-seeder-1',
                 'name' => 'Ahmadi',
                 'email' => 'madi@digipark.go.id',
-                'password' => bcrypt('secret'),
+                'password' =>  Hash::make('secret'),
                 'phone_number' => '0812341234',
                 'photo_path' => 'Gamteng.jpg',
             ],

@@ -6,6 +6,7 @@ use App\Models\FinancialService;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
 
 
@@ -60,7 +61,7 @@ class ManageUserController extends Controller
             'password' => 'required'
         ]);
 
-        $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['password'] =  Hash::make($validatedData['password']);
         $validatedData['uuid']  = Str::uuid();
         User::create($validatedData);
         return redirect('/users')->with('success', 'New Post Inserted!');
@@ -100,7 +101,7 @@ class ManageUserController extends Controller
         if ($request->password == null) {
             unset($validateData['password']);
         } else {
-            $validateData['password'] = bcrypt($request->password);
+            $validateData['password'] =  Hash::make($request->password);
         }
 
         User::where('id', $user->id)->update($validateData);

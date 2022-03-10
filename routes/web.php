@@ -21,10 +21,14 @@ use App\Http\Controllers\ManageSlideController;
 use App\Http\Controllers\ManageTourController;
 
 
+Route::get('/i-am-forgot-login-admin', [AuthAdminController::class, 'forgot']);
+Route::get('reset/{uuid}', [AuthAdminController::class, 'reset']);
 Route::get('/login-admin', [AuthAdminController::class, 'index'])->name('login');
+Route::post('/forgot', [AuthAdminController::class, 'forgot_proses']);
 Route::post('/login-admin', [AuthAdminController::class, 'store']);
+Route::post('/new-password', [AuthAdminController::class, 'new_pass']);
 
-
+Route::get('com', [ManageCommunityController::class, 'listCommunities']);
 
 
 Route::middleware(['islogin'])->group(function () {
@@ -81,6 +85,8 @@ Route::middleware(['islogin'])->group(function () {
     Route::delete('bank-register/{financialServiceRegister}', [ManageBankRegisterController::class, 'destroy']);
     Route::resource('/bank-register', ManageBankRegisterController::class);
     Route::get('/bank-register-data', [ManageBankRegisterController::class, 'anyData'])->name('bank-register-data');
+    Route::post('/bank-send', [ManageBankRegisterController::class, 'sendData']);
+
 
     Route::delete('bank-loan/{financialServiceRegister}', [ManageBankLoanController::class, 'destroy']);
     Route::resource('/bank-loan', ManageBankLoanController::class);

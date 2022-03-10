@@ -13,8 +13,23 @@ class ManageCommunityController extends Controller
 {
     public function index()
     {
-        // return Community::join('community_categories', 'community_categories.uuid', '=', 'communities.community_category_uuid')->get(['communities.*', 'community_categories.category']);
+        $tours = Community::join('community_categories', 'community_categories.uuid', '=', 'communities.community_category_uuid')->get(['communities.*', 'community_categories.category']);
 
+
+        foreach ($tours as $tour) {
+            $str = ltrim($tour->image_path, '[');
+            $str1 = substr($str, 0, -1);
+            $myArray = explode(',', $str1);
+            $image = ltrim($myArray[0], '"');
+            $image = substr($image, 0, -1);
+            $galery = Gallery::where('uuid', $image)->first();
+            if($galery){
+                $tour->image_path =  $galery->path;
+            }else{
+                $tour->image_path = '-';
+            }
+        }
+        return $tours;
         return view('dashboard.manage.community.index', [
             'title'         => 'Community',
         ]);
@@ -163,5 +178,61 @@ class ManageCommunityController extends Controller
     {
         Community::destroy($community->id);
         return redirect('/community/')->with('success', 'Community has been Deleted!');
+    }
+    public function listCommunities()
+    {
+        $communitiesSingle = Community::join('galleries', 'communities.logo_path', '=', 'galleries.uuid')
+        ->where('communities.uuid', '0819b7bb-5429-499a-89ac-b894e0f9407a')
+        ->get(['communities.*', 'galleries.path'])
+        ->first();
+        $communitiesArray = Community::join('galleries', 'communities.logo_path', '=', 'galleries.uuid')
+        ->where('communities.uuid', '0819b7bb-5429-499a-89ac-b894e0f9407a')
+        ->get(['communities.*', 'galleries.path']);
+        $communities = Community::join('galleries', 'communities.logo_path', '=', 'galleries.uuid')
+        ->get(['communities.*', 'galleries.path']);
+
+        return $communities;
+
+        // no loop
+        // foreach ($communities as $tour) {
+        //     $str = ltrim($tour->image_path, '[');
+        //     $str1 = substr($str, 0, -1);
+        //     $myArray = explode(',', $str1);
+        //     $image = ltrim($myArray[0], '"');
+        //     $image = substr($image, 0, -1);
+        //     $galery = Gallery::where('uuid', $image)->first();
+        //     if($galery){
+        //         $tour->image_path =  $galery->path;
+        //     }else{
+        //         $tour->image_path = '-';
+        //     }
+        // }
+
+        // with loop
+        foreach ($communities as $tour) {
+            $str = ltrim($tour->image_path, '[');
+            $str1 = substr($str, 0, -1);
+            $myArray = explode(',', $str1);
+            // ddd($myArray);
+            foreach($myArray as $dataArray){
+                $image = ltrim($dataArray, '"');
+                $image = substr($image, 0, -1);
+                $galery = Gallery::where('uuid', $image)->first();
+                // $validatedData['image_path'] = $validatedData['image_path'] . ',"' . $galery->path . '"';
+                $images[] = $galery->path;
+            }
+
+            $tour->image_path = $images;
+        }
+        $meta = [
+            'message' => "List all communities",
+            'code'  => 200,
+            'status'  => "success"
+        ];
+        $response = [
+            'meta'  => $meta,
+            'data'  => $communities
+        ];
+        return response()->json($response, 200);
     }
 }

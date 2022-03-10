@@ -403,12 +403,13 @@
 
 <body>
     <div id="kepala_surat">
-        <img src="http://adminis/images/dglogo.png" width="70px" height="80px" id="logo_surat" valign="baseline" />
-        PENGADILAN HUBUNGAN INDUSTRIAL<br />
-        PADA PENGADILAN NEGERI PALANGKA RAYA<br />
-        <strong>JALAN DIPONEGORO No. 21 PALANGKA RAYA</strong><br />
-        KODE POS(73111) KALIMANTAN TENGAH
-        <img src="http://administrator.test/vendors/images/dglogo.png" />
+
+        <img src="http://administrator.test/vendors/images/paten.jpg" width="70px" height="auto" id="logo_surat"
+            valign="baseline" />
+        <strong>DIGIPARK CREATIVE HUB</strong><br />
+        Jl Cilik Riwut Km 7 Palangkaraya<br />
+        Email : digiparkcreativehub@gmail.com<br />
+        KODE POS(73112) KALIMANTAN TENGAH
     </div>
     {{-- <p>{{ session('email') }}</p> --}}
 </body>

@@ -12,7 +12,7 @@ Route::prefix('v2')->group(function () {
     Route::post('user/check-email', [Api\UtilityController::class, 'checkEmailUser']);
     Route::post('admin/check-phone', [Api\UtilityController::class, 'checkPhoneAdmin']);
     Route::post('user/check-phone', [Api\UtilityController::class, 'checkPhoneUser']);
-
+    Route::get('businesss/list', [Api\User\BusinessController::class, 'listBusiness']);
 
     //* Role Admin
     Route::prefix('admin')->group(function () {

@@ -30,8 +30,6 @@ class ManageBankRegisterController extends Controller
             ->addColumn('action', function ($model) {
                 return '<button onclick="myFunction(' . $model->id . ')"  type="button" class="btn btn-danger  py-1 px-2"><i class="icon-copy dw dw-trash"></i></button>';
             })
-
-
             ->make(true);
     }
 

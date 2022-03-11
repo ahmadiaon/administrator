@@ -59,7 +59,6 @@ class ManageGalerryController extends Controller
      */
     public function store(Request $request)
     {
-
         $validateData = $request->validate([
             'name'         => 'required|max:255',
             'content'         => 'required|image|file|max:1024',

@@ -11,8 +11,10 @@ class ManageBankLoanController extends Controller
 {
     public function index()
     {
-        // return CommunityRegister::join('communities', 'communities.uuid', '=', 'community_registers.community_uuid')->get(['community_registers.*', 'community_registers.name as nama', 'communities.name']);
+        $aa = FinancialServiceSubmission::join('financial_services', 'financial_services.uuid', '=', 'financial_service_submissions.financial_service_uuid')->get();
 
+        // return CommunityRegister::join('communities', 'communities.uuid', '=', 'community_registers.community_uuid')->get(['community_registers.*', 'community_registers.name as nama', 'communities.name']);
+        return $aa;
         return view('dashboard.manage.bankloan.index', [
             'title'         => 'Bank Loan',
         ]);

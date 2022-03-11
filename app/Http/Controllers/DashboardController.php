@@ -13,6 +13,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // return session('admin')['name'];
+        if(!session('admin')){
+            return redirect()->intended('/login-admin');
+        }else{
+            session('admin')['name'];
+        }
         $data["email"] = "dataahmadi2021@gmail.com";
         $data["title"] = "From digi.com";
         $data["body"] = "This is Demo";

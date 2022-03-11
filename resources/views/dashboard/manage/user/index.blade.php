@@ -20,7 +20,6 @@
         <table id="myTablse" class="table table-stripped">
             <thead>
                 <tr>
-                    <th width="10%" class="table-plus datatable-nosort">Profile</th>
                     <th width="20%">Nama</th>
                     <th width="15%">Telepon</th>
                     <th width="30%">Email</th>
@@ -99,7 +98,6 @@
         serverSide: true,
         ajax: '{!! route('data') !!}',
         columns: [
-            { data: 'image', name: 'image' },
             { data: 'name', name: 'name' },
             { data: 'phone_number', name: 'phone_number' },
             { data: 'email', name: 'email' },

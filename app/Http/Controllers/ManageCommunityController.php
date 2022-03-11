@@ -13,23 +13,23 @@ class ManageCommunityController extends Controller
 {
     public function index()
     {
-        $tours = Community::join('community_categories', 'community_categories.uuid', '=', 'communities.community_category_uuid')->get(['communities.*', 'community_categories.category']);
+        // $tours = Community::join('community_categories', 'community_categories.uuid', '=', 'communities.community_category_uuid')->get(['communities.*', 'community_categories.category']);
 
 
-        foreach ($tours as $tour) {
-            $str = ltrim($tour->image_path, '[');
-            $str1 = substr($str, 0, -1);
-            $myArray = explode(',', $str1);
-            $image = ltrim($myArray[0], '"');
-            $image = substr($image, 0, -1);
-            $galery = Gallery::where('uuid', $image)->first();
-            if($galery){
-                $tour->image_path =  $galery->path;
-            }else{
-                $tour->image_path = '-';
-            }
-        }
-        return $tours;
+        // foreach ($tours as $tour) {
+        //     $str = ltrim($tour->image_path, '[');
+        //     $str1 = substr($str, 0, -1);
+        //     $myArray = explode(',', $str1);
+        //     $image = ltrim($myArray[0], '"');
+        //     $image = substr($image, 0, -1);
+        //     $galery = Gallery::where('uuid', $image)->first();
+        //     if($galery){
+        //         $tour->image_path =  $galery->path;
+        //     }else{
+        //         $tour->image_path = '-';
+        //     }
+        // }
+        // return $tours;
         return view('dashboard.manage.community.index', [
             'title'         => 'Community',
         ]);
@@ -83,8 +83,8 @@ class ManageCommunityController extends Controller
             'province'                  => 'required',
             'location'                  => 'required',
             'instagram'                 => 'required',
-            'facebook'                  => 'required',
-            'youtube'                   => 'required',
+            'facebook'                  => '',
+            'youtube'                   => '',
             'image_path'                => 'required',
             'status'                    => 'required'
         ]);

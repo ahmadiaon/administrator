@@ -148,8 +148,8 @@
         }
 
         .garis {
-            border-bottom: 1px solid #000;
-            width: 94%;
+            border-bottom: 3px solid #000;
+            width: 100%;
             margin: 0 auto;
             margin-bottom: 15px;
             clear: both;
@@ -282,10 +282,10 @@
         }
 
         .garis {
-            border-bottom: 1px solid #000;
-            width: 450px;
+            border-bottom: 3px solid #000;
+            width: 600px;
             margin: 0 auto;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             clear: both;
         }
 
@@ -403,7 +403,6 @@
 
 <body>
     <div id="kepala_surat">
-
         <img src="http://administrator.test/vendors/images/paten.jpg" width="70px" height="auto" id="logo_surat"
             valign="baseline" />
         <strong>DIGIPARK CREATIVE HUB</strong><br />
@@ -411,6 +410,50 @@
         Email : digiparkcreativehub@gmail.com<br />
         KODE POS(73112) KALIMANTAN TENGAH
     </div>
+    <div class="garis"></div>
+    <div style="padding-left: 50px;">
+        <div>
+            <div style="display:inline-block; width: 70px;">Nomor</div>
+            <div style="display:inline-block; width: 2px;">: </div>
+            <div style="display:inline-block; width: 100px;">1234678 </div>
+            <br>
+        </div>
+        <div>
+            <div style="display:inline-block; width: 70px;">Lampiran</div>
+            <div style="display:inline-block; width: 2px;">: </div>
+            <div style="display:inline-block; width: 100px;"> <strong> 1234678 </strong></div>
+            <br>
+        </div>
+        <div>
+            <div style="display:inline-block; width: 70px;">Perihal</div>
+            <div style="display:inline-block; width: 2px;">: </div>
+            <div style="display:inline-block; width: 100px;"> <strong> 1234678 </strong></div>
+            <br><br>
+        </div>
+        {{-- pembuka --}}
+        <div>
+            <div style="display:inline-block; width: 200px;"><strong>Dengan Hormat,</strong></div>
+            <br>
+        </div>
+        <div>
+            <div style="display:inline-block; width: 500px;">Yang bertanda tangan dibawah ini:</div>
+            <br>
+            <div style="padding-left: 30px;">
+                <div style="display:inline-block; width: 70px;">Nama</div>
+                <div style="display:inline-block; width: 2px;">: </div>
+                <div style="display:inline-block; width: 100px;">Ahmadi </div>
+                <br>
+            </div>
+            <div style="padding-left: 30px;">
+                <div style="display:inline-block; width: 70px;">Alamat</div>
+                <div style="display:inline-block; width: 2px;">: </div>
+                <div style="display:block; width: 600px;">Jl. Temanggung Tilung XXII 22B, Kota Palangka Raya
+                    fsfsd fsdfsd fsd f fsd sdf sdf sdfsdfsd f sf
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- <p>{{ session('email') }}</p> --}}
 </body>
 
